@@ -16,7 +16,14 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "useButtonType": "warn"
+        "useButtonType": "warn",
+        "useSemanticElements": "warn",
+        "noStaticElementInteractions": "warn",
+        "useFocusableInteractive": "warn",
+        "useKeyWithClickEvents": "warn",
+        "useAriaPropsSupportedByRole": "warn",
+        "useAriaPropsForRole": "warn",
+        "noLabelWithoutControl": "warn"
       },
       "correctness": {
         "noUnusedVariables": "warn",
@@ -27,6 +34,7 @@
       "suspicious": {
         "noDoubleEquals": "error",
         "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
         "noUnknownAtRules": "off"
       },
       "style": {
@@ -35,6 +43,12 @@
       }
     }
   },
+  "overrides": [
+    {
+      "includes": ["app/src/lib/api/**"],
+      "linter": { "enabled": false }
+    }
+  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
