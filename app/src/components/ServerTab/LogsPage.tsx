@@ -40,6 +40,7 @@ export function LogsPage() {
   const [autoScroll, setAutoScroll] = useState(true);
 
   // Auto-scroll to bottom when new entries arrive
+  // biome-ignore lint/correctness/useExhaustiveDependencies: entries.length intentionally triggers re-scroll on new entries
   useEffect(() => {
     if (autoScroll && containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;

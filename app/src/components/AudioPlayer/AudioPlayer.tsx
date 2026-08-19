@@ -180,7 +180,9 @@ export function AudioPlayer() {
         // Mute audio during drag-to-seek to prevent popping from the WebAudio
         // backend's hard stop/start cycle on each seek. Unmute with a short
         // fade-in when the drag ends.
-        const seekMedia = wavesurfer.getMediaElement() as any;
+        const seekMedia = wavesurfer.getMediaElement() as HTMLMediaElement & {
+          getGainNode?: () => GainNode | null;
+        };
         const seekGain: GainNode | null = seekMedia?.getGainNode?.() ?? null;
         if (seekGain) {
           const ctx = seekGain.context as AudioContext;

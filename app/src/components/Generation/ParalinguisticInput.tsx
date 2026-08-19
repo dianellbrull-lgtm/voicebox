@@ -341,8 +341,8 @@ export const ParalinguisticInput = forwardRef<ParalinguisticInputRef, Paralingui
           ref={editorRef}
           contentEditable={!disabled}
           suppressContentEditableWarning
-          role={disabled ? undefined : 'textbox'}
-          aria-multiline={disabled ? undefined : true}
+          role="textbox"
+          aria-multiline={true}
           aria-placeholder={placeholder}
           aria-disabled={disabled}
           tabIndex={disabled ? -1 : 0}

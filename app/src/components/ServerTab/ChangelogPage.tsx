@@ -59,6 +59,7 @@ function renderMarkdown(md: string): React.ReactNode[] {
       elements.push(
         <ul key={elements.length} className="space-y-1 my-2">
           {items.map((item, idx) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static parsed markdown, list never reorders
             <li key={idx} className="text-sm text-muted-foreground flex gap-2">
               <span className="text-muted-foreground/50 select-none shrink-0">&bull;</span>
               <span>{inlineMarkdown(item)}</span>
@@ -99,6 +100,7 @@ function renderTable(tableLines: string[], keyBase: number): React.ReactNode {
           <tr className="border-b">
             {headers.map((h, hIdx) => (
               <th
+                // biome-ignore lint/suspicious/noArrayIndexKey: static parsed markdown table, never reorders
                 key={hIdx}
                 className="text-left py-1.5 pr-4 text-muted-foreground font-medium text-xs"
               >
@@ -109,8 +111,10 @@ function renderTable(tableLines: string[], keyBase: number): React.ReactNode {
         </thead>
         <tbody>
           {rows.map((row, rowIdx) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static parsed markdown table, never reorders
             <tr key={rowIdx} className="border-b border-border/50">
               {row.map((cell, cellIdx) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static parsed markdown table, never reorders
                 <td key={cellIdx} className="py-1.5 pr-4 text-muted-foreground">
                   {inlineMarkdown(cell)}
                 </td>
@@ -201,6 +205,7 @@ function ChangelogEntryCard({ entry }: { entry: ChangelogEntry }) {
 
       {isLong && (
         <button
+          type="button"
           onClick={() => setExpanded(!expanded)}
           className="text-xs text-accent hover:underline mt-2"
         >

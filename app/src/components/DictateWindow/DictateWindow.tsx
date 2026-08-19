@@ -154,6 +154,7 @@ export function DictateWindow() {
     });
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount-once Tauri event subscription; adding handler deps would tear down and re-subscribe listeners mid-dictation
   useEffect(() => {
     const unlistens: Promise<UnlistenFn>[] = [];
 
@@ -261,7 +262,7 @@ export function DictateWindow() {
       setSpeakElapsed(Date.now() - anchor);
     }, 250);
     return () => window.clearInterval(iv);
-  }, [speaking?.generationId, speaking?.startedAt]);
+  }, [speaking?.startedAt]);
 
   // --- Effective pill state -----------------------------------------------
 
