@@ -147,11 +147,25 @@ brew install webp ffmpeg
 
 ### 1. Create a Branch
 
+Always branch off an up-to-date `main`:
+
 ```bash
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/your-bug-fix
+git checkout main && git pull origin main
+git checkout -b feat/your-feature-name
 ```
+
+**Branch naming conventions:**
+
+| Prefix | Use for |
+|--------|---------|
+| `feat/` | New features |
+| `fix/` | Bug fixes |
+| `refactor/` | Code restructuring, no functional change |
+| `docs/` | Documentation only |
+| `ci/` | CI/CD and build pipeline changes |
+| `chore/` | Maintenance (deps, cleanup, tooling) |
+
+Use short, kebab-case descriptions: `feat/voice-profile-export`, `fix/audio-playback-timeout`.
 
 ### 2. Make Your Changes
 
@@ -169,23 +183,32 @@ git checkout -b fix/your-bug-fix
 
 ### 4. Commit Your Changes
 
-Write clear, descriptive commit messages:
+Use [Conventional Commits](https://www.conventionalcommits.org/) — the type should match your branch prefix:
+
+```
+type(scope): short description
+
+Longer explanation if needed. Wrap at 72 characters.
+```
+
+Types: `feat`, `fix`, `refactor`, `docs`, `test`, `ci`, `chore`, `perf`
 
 ```bash
-git commit -m "Add feature: voice profile export"
-git commit -m "Fix: audio playback stops after 30 seconds"
+git commit -m "feat: add voice profile export"
+git commit -m "fix(playback): audio stops after 30 seconds"
 ```
 
 ### 5. Push and Create Pull Request
 
 ```bash
-git push origin feature/your-feature-name
+git push -u origin feat/your-feature-name
 ```
 
-Then create a pull request on GitHub with:
-- Clear description of changes
-- Screenshots (for UI changes)
-- Reference to related issues
+Then open a pull request on GitHub — the [PR template](.github/PULL_REQUEST_TEMPLATE.md) will pre-fill with sections for:
+- Summary and type of change
+- Related issues (`Closes #N`)
+- Screenshots (required for UI changes)
+- Test plan and checklist
 
 ## Code Style
 
